@@ -1,0 +1,150 @@
+getprop("ro.product.device") == "eagle_ec1704" || abort("This package is for \"eagle_ec1704\" devices; this is a \"" + getprop("ro.product.device") + "\".");
+ui_print("Target: eagle/full_eagle_ec1704/eagle_ec1704:6.0/MDB08M/911:userdebug/test-keys");
+show_progress(0.650000, 0);
+ui_print("Patching system image unconditionally...");
+block_image_update("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", package_extract_file("system.transfer.list"), "system.new.dat", "system.patch.dat");
+ui_print("Verifying the updated system image...");
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", "8,0,32767,32768,32770,32785,32787,33299,58413") == "64ee3a562b373b29d4f21f246ca23727e9b57e26" then
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", "8,32767,32768,32770,32785,32787,33299,58413,58925") == "5bb540ac875a7fcdcc573244b6051c161075cb32" then
+ui_print("Verified the updated system image.");
+else
+  abort("system partition has unexpected non-zero contents after OTA update");
+endif;
+else
+ui_print("Verify the updated system image failure and retry.");
+block_image_update("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", package_extract_file("system.transfer.list"), "system.new.dat", "system.patch.dat");
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", "8,0,32767,32768,32770,32785,32787,33299,58413") == "64ee3a562b373b29d4f21f246ca23727e9b57e26" then
+ui_print("Verified the updated system image.");
+else
+ui_print("Verify the updated system image failure and retry.");
+block_image_update("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", package_extract_file("system.transfer.list"), "system.new.dat", "system.patch.dat");
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", "8,0,32767,32768,32770,32785,32787,33299,58413") == "64ee3a562b373b29d4f21f246ca23727e9b57e26" then
+ui_print("Verified the updated system image.");
+else
+ui_print("Verify the updated system image failure and retry.");
+block_image_update("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", package_extract_file("system.transfer.list"), "system.new.dat", "system.patch.dat");
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", "8,0,32767,32768,32770,32785,32787,33299,58413") == "64ee3a562b373b29d4f21f246ca23727e9b57e26" then
+ui_print("Verified the updated system image.");
+else
+ui_print("Verify the updated system image failure and retry.");
+block_image_update("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", package_extract_file("system.transfer.list"), "system.new.dat", "system.patch.dat");
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", "8,0,32767,32768,32770,32785,32787,33299,58413") == "64ee3a562b373b29d4f21f246ca23727e9b57e26" then
+ui_print("Verified the updated system image.");
+else
+ui_print("Verify the updated system image failure and retry.");
+block_image_update("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", package_extract_file("system.transfer.list"), "system.new.dat", "system.patch.dat");
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", "8,0,32767,32768,32770,32785,32787,33299,58413") == "64ee3a562b373b29d4f21f246ca23727e9b57e26" then
+ui_print("Verified the updated system image.");
+else
+ui_print("Verify the updated system image failure and retry.");
+block_image_update("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", package_extract_file("system.transfer.list"), "system.new.dat", "system.patch.dat");
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", "8,0,32767,32768,32770,32785,32787,33299,58413") == "64ee3a562b373b29d4f21f246ca23727e9b57e26" then
+ui_print("Verified the updated system image.");
+else
+ui_print("Verify the updated system image failure and retry.");
+block_image_update("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", package_extract_file("system.transfer.list"), "system.new.dat", "system.patch.dat");
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", "8,0,32767,32768,32770,32785,32787,33299,58413") == "64ee3a562b373b29d4f21f246ca23727e9b57e26" then
+ui_print("Verified the updated system image.");
+else
+ui_print("Verify the updated system image failure and retry.");
+block_image_update("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", package_extract_file("system.transfer.list"), "system.new.dat", "system.patch.dat");
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", "8,0,32767,32768,32770,32785,32787,33299,58413") == "64ee3a562b373b29d4f21f246ca23727e9b57e26" then
+ui_print("Verified the updated system image.");
+else
+ui_print("Verify the updated system image failure and retry.");
+block_image_update("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", package_extract_file("system.transfer.list"), "system.new.dat", "system.patch.dat");
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/system_2", "8,0,32767,32768,32770,32785,32787,33299,58413") == "64ee3a562b373b29d4f21f246ca23727e9b57e26" then
+ui_print("Verified the updated system image.");
+else
+  abort("system partition has unexpected contents after OTA update");
+endif;
+endif;
+endif;
+endif;
+endif;
+endif;
+endif;
+endif;
+endif;
+endif;
+show_progress(0.100000, 0);
+ui_print("Patching vendor image unconditionally...");
+block_image_update("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", package_extract_file("vendor.transfer.list"), "vendor.new.dat", "vendor.patch.dat");
+ui_print("Verifying the updated vendor image...");
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", "2,0,5817") == "c050d0ab57256498b040f0fd37f03fe100d2fd79" then
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", "2,5817,6329") == "7d76d48d64d7ac5411d714a4bb83f37e3e5b8df6" then
+ui_print("Verified the updated vendor image.");
+else
+  abort("vendor partition has unexpected non-zero contents after OTA update");
+endif;
+else
+ui_print("Verify the updated vendor image failure and retry.");
+block_image_update("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", package_extract_file("vendor.transfer.list"), "vendor.new.dat", "vendor.patch.dat");
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", "2,0,5817") == "c050d0ab57256498b040f0fd37f03fe100d2fd79" then
+ui_print("Verified the updated vendor image.");
+else
+ui_print("Verify the updated vendor image failure and retry.");
+block_image_update("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", package_extract_file("vendor.transfer.list"), "vendor.new.dat", "vendor.patch.dat");
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", "2,0,5817") == "c050d0ab57256498b040f0fd37f03fe100d2fd79" then
+ui_print("Verified the updated vendor image.");
+else
+ui_print("Verify the updated vendor image failure and retry.");
+block_image_update("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", package_extract_file("vendor.transfer.list"), "vendor.new.dat", "vendor.patch.dat");
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", "2,0,5817") == "c050d0ab57256498b040f0fd37f03fe100d2fd79" then
+ui_print("Verified the updated vendor image.");
+else
+ui_print("Verify the updated vendor image failure and retry.");
+block_image_update("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", package_extract_file("vendor.transfer.list"), "vendor.new.dat", "vendor.patch.dat");
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", "2,0,5817") == "c050d0ab57256498b040f0fd37f03fe100d2fd79" then
+ui_print("Verified the updated vendor image.");
+else
+ui_print("Verify the updated vendor image failure and retry.");
+block_image_update("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", package_extract_file("vendor.transfer.list"), "vendor.new.dat", "vendor.patch.dat");
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", "2,0,5817") == "c050d0ab57256498b040f0fd37f03fe100d2fd79" then
+ui_print("Verified the updated vendor image.");
+else
+ui_print("Verify the updated vendor image failure and retry.");
+block_image_update("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", package_extract_file("vendor.transfer.list"), "vendor.new.dat", "vendor.patch.dat");
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", "2,0,5817") == "c050d0ab57256498b040f0fd37f03fe100d2fd79" then
+ui_print("Verified the updated vendor image.");
+else
+ui_print("Verify the updated vendor image failure and retry.");
+block_image_update("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", package_extract_file("vendor.transfer.list"), "vendor.new.dat", "vendor.patch.dat");
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", "2,0,5817") == "c050d0ab57256498b040f0fd37f03fe100d2fd79" then
+ui_print("Verified the updated vendor image.");
+else
+ui_print("Verify the updated vendor image failure and retry.");
+block_image_update("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", package_extract_file("vendor.transfer.list"), "vendor.new.dat", "vendor.patch.dat");
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", "2,0,5817") == "c050d0ab57256498b040f0fd37f03fe100d2fd79" then
+ui_print("Verified the updated vendor image.");
+else
+ui_print("Verify the updated vendor image failure and retry.");
+block_image_update("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", package_extract_file("vendor.transfer.list"), "vendor.new.dat", "vendor.patch.dat");
+if range_sha1("/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/vendor_2", "2,0,5817") == "c050d0ab57256498b040f0fd37f03fe100d2fd79" then
+ui_print("Verified the updated vendor image.");
+else
+  abort("vendor partition has unexpected contents after OTA update");
+endif;
+endif;
+endif;
+endif;
+endif;
+endif;
+endif;
+endif;
+endif;
+endif;
+show_progress(0.050000, 5);
+package_extract_file("normal.img", "/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/mirror/normal_2");
+show_progress(0.200000, 10);
+run_program("/sbin/busybox","mount", "-t", "ext4", "/dev/block/platform/soc/f0000000.ahb/f0400000.dwmmc0/by-name/userdata", "/data");
+package_extract_file("recovery.img", "/data/upgrade/signimgs/recovery.img");
+package_extract_file("bootarea.img", "/cache/bootarea.img");
+run_program("/sbin/mmc_utils","bootarea", "update", "/dev/block/mmcblk0");
+run_program("/sbin/busybox","sync");
+run_program("/sbin/unrd", "-s", "boot.mode", "none");
+run_program("/sbin/unrd", "-s", "force_ota", "no");
+run_program("/sbin/unrd", "-s", "crash_counter", "0");
+run_program("/sbin/unrd", "-s", "wipe_counter", "0");
+run_program("/sbin/unrd");
+

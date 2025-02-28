@@ -1,0 +1,184 @@
+#!/system/bin/sh
+#
+# A wrapper for busctl to dbus-send
+# Only a few commands are supported
+# V1.0, 2018/07
+#
+
+# Supported keywords
+KEYWORD_ActivateAndGetMode="module_program_ActivateAndGetMode"
+KEYWORD_ModTestRequest="module_program_ModTestRequest"
+KEYWORD_ModTestRequestX="module_program_ModTestRequestX"
+KEYWORD_ResetModule="module_program_ResetModule"
+
+# Set DEBUG=1 to save debug log
+DEBUG=0
+LOG_FILE=/blackbox/busctl_wrapper.log
+
+function debug_log()
+{
+	if [ $DEBUG -eq 1 ]; then
+		echo "$*" >> $LOG_FILE
+	fi
+}
+
+# Get parameter value from reply of dbus-send
+function get_param()
+{
+	LineNum=1
+	TargetLineNum=-1
+	IsArray=0
+	echo "$1" | while read line
+	do
+		if [ $LineNum -eq $TargetLineNum ]; then
+			if echo $line | grep "variant array" > /dev/null; then
+				IsArray=1
+				TargetLineNum=$((LineNum+1))
+			else
+				if [ $IsArray -eq 0 ]; then
+					value=$(echo $line | awk '{print $3}')
+					echo $value
+				else
+					value=$line
+					echo $value
+				fi
+				return
+			fi
+		elif echo $line | grep "string \"$2\"" > /dev/null; then
+			TargetLineNum=$((LineNum+1))
+		fi
+		LineNum=$((LineNum+1))
+	done
+}
+
+function check_sanity()
+{
+	return 0
+}
+
+# busctl --expect-reply=true call com.hasselblad.suc / com.hasselblad.suc module_program_ActivateAndGetMode ui $SECURITYCODE_ActivateAndGetMode $NODE
+# dbus-send --system --print-reply --type=method_call --dest=com.hasselblad.suc /suc com.hasselblad.suc.module_program_activateandgetmode uint32:$SECURITYCODE_ActivateAndGetMode int32:$NODE
+function wrapper_ActivateAndGetMode()
+{
+	Arg1=$(echo $@ | awk '{print $(NF-1)}')
+	Arg2=$(echo $@ | awk '{print $(NF)}')
+	DbusSendCommand="dbus-send --system --print-reply --type=method_call --dest=com.hasselblad.suc /suc com.hasselblad.suc.module_program_activateandgetmode \
+uint32:$Arg1 int32:$Arg2"
+	debug_log "== dbus-send command:" "$DbusSendCommand"
+	DbusSendReply=`$DbusSendCommand`
+	if [ $? -eq 0 ] ; then
+		debug_log "== dbus-send reply:"
+		debug_log "$DbusSendReply"
+		CameraModule=`get_param "$DbusSendReply" camera_module`
+		ModuleStatus=`get_param "$DbusSendReply" module_status`
+		ConvertedReply="a{sv} 2 \"camera_module\" i $CameraModule \"module_status\" i $ModuleStatus"
+		debug_log ">> busctl reply:" "$ConvertedReply"
+		echo "$ConvertedReply"
+	else
+		return $?
+	fi
+}
+
+# busctl --expect-reply=true call com.hasselblad.suc / com.hasselblad.suc module_program_ModTestRequest uiiu $SECURITYCODE_ModTestRequest $NODE $2 $3
+# dbus-send --system --print-reply --type=method_call --dest=com.hasselblad.suc /suc com.hasselblad.suc.module_program_modtestrequest uint32:$SECURITYCODE_ModTestRequest int32:$NODE byte:$2 uint32:$3
+function wrapper_ModTestRequest()
+{
+	Arg1=$(echo $@ | awk '{print $(NF-3)}')
+	Arg2=$(echo $@ | awk '{print $(NF-2)}')
+	Arg3=$(echo $@ | awk '{print $(NF-1)}')
+	Arg4=$(echo $@ | awk '{print $(NF)}')
+	DbusSendCommand="dbus-send --system --print-reply --type=method_call --dest=com.hasselblad.suc /suc com.hasselblad.suc.module_program_modtestrequest \
+uint32:$Arg1 int32:$Arg2 byte:$Arg3 uint32:$Arg4"
+	debug_log "== dbus-send command:" "$DbusSendCommand"
+	DbusSendReply=`$DbusSendCommand`
+	if [ $? -eq 0 ] ; then
+		debug_log "== dbus-send reply:"
+		debug_log "$DbusSendReply"
+		CameraModule=`get_param "$DbusSendReply" camera_module`
+		ModTestCmd=`get_param "$DbusSendReply" mod_test_cmd`
+		ModTestValue=`get_param "$DbusSendReply" mod_test_value`
+		ConvertedReply="a{sv} 3 \"camera_module\" i $CameraModule \"mod_test_cmd\" i $ModTestCmd \"mod_test_value\" u $ModTestValue"
+		debug_log ">> busctl reply:" "$ConvertedReply"
+		echo "$ConvertedReply"
+	else
+		return $?
+	fi
+}
+
+# busctl --expect-reply=true call com.hasselblad.suc / com.hasselblad.suc module_program_ModTestRequestX uiiay $SECURITYCODE_ModTestRequestX $NODE $2 8 $3 $4 $5 $6 $7 $8 $9 ${10}
+# dbus-send --system --print-reply --type=method_call --dest=com.hasselblad.suc /suc com.hasselblad.suc.module_program_modtestrequestx uint32:$SECURITYCODE_ModTestRequestX int32:$NODE byte:$2 array:byte:$3,$4,$5,$6,$7,$8,$9,${10}
+function wrapper_ModTestRequestX()
+{
+	Arg1=$(echo $@ | awk '{print $(NF-11)}')
+	Arg2=$(echo $@ | awk '{print $(NF-10)}')
+	Arg3=$(echo $@ | awk '{print $(NF-9)}')
+	Arg4=$(echo $@ | awk '{print $(NF-7)}')
+	Arg5=$(echo $@ | awk '{print $(NF-6)}')
+	Arg6=$(echo $@ | awk '{print $(NF-5)}')
+	Arg7=$(echo $@ | awk '{print $(NF-4)}')
+	Arg8=$(echo $@ | awk '{print $(NF-3)}')
+	Arg9=$(echo $@ | awk '{print $(NF-2)}')
+	Arg10=$(echo $@ | awk '{print $(NF-1)}')
+	Arg11=$(echo $@ | awk '{print $(NF)}')
+	DbusSendCommand="dbus-send --system --print-reply --type=method_call --dest=com.hasselblad.suc /suc com.hasselblad.suc.module_program_modtestrequestx \
+uint32:$Arg1 int32:$Arg2 byte:$Arg3 array:byte:$Arg4,$Arg5,$Arg6,$Arg7,$Arg8,$Arg9,$Arg10,$Arg11"
+	debug_log "== dbus-send command:" "$DbusSendCommand"
+	DbusSendReply=`$DbusSendCommand`
+	if [ $? -eq 0 ] ; then
+		debug_log "== dbus-send reply:"
+		debug_log "$DbusSendReply"
+		CameraModule=`get_param "$DbusSendReply" camera_module`
+		ModTestXData=`get_param "$DbusSendReply" mod_testX_data`
+		ModTestCmd=`get_param "$DbusSendReply" mod_test_cmd`
+
+		ConvertedReply="a{sv} 3 \"camera_module\" i $CameraModule \"mod_testX_data\" ay 8 $ModTestXData \"mod_test_cmd\" i $ModTestCmd"
+		debug_log ">> busctl reply:" "$ConvertedReply"
+		echo "$ConvertedReply"
+	else
+		return $?
+	fi
+}
+
+# busctl --expect-reply=true call com.hasselblad.suc / com.hasselblad.suc module_program_ResetModule ui $SECURITYCODE_ResetModule $NODE
+# dbus-send --system --print-reply --type=method_call --dest=com.hasselblad.suc /suc com.hasselblad.suc.module_program_resetmodule uint32:$SECURITYCODE_ResetModule int32:$NODE
+function wrapper_ResetModule()
+{
+	Arg1=$(echo $@ | awk '{print $(NF-1)}')
+	Arg2=$(echo $@ | awk '{print $(NF)}')
+	DbusSendCommand="dbus-send --system --print-reply --type=method_call --dest=com.hasselblad.suc /suc com.hasselblad.suc.module_program_resetmodule \
+uint32:$Arg1 int32:$Arg2"
+	debug_log "== dbus-send command:" "$DbusSendCommand"
+	DbusSendReply=`$DbusSendCommand`
+	if [ $? -eq 0 ] ; then
+		debug_log "== dbus-send reply:"
+		debug_log "$DbusSendReply"
+		CameraModule=$(echo $DbusSendReply | awk '{print $(NF)}')
+		ConvertedReply="i $CameraModule"
+		debug_log ">> busctl reply:" "$ConvertedReply"
+		echo "$ConvertedReply"
+	else
+		return $?
+	fi
+}
+
+function wrapper()
+{
+	if echo $@ | grep $KEYWORD_ActivateAndGetMode > /dev/null; then
+		wrapper_ActivateAndGetMode $@
+	elif echo $@ | grep $KEYWORD_ModTestRequestX > /dev/null; then
+		wrapper_ModTestRequestX $@
+	elif echo $@ | grep $KEYWORD_ModTestRequest > /dev/null; then
+		wrapper_ModTestRequest $@
+	elif echo $@ | grep $KEYWORD_ResetModule > /dev/null; then
+		wrapper_ResetModule $@
+	else
+		echo Command not supported!
+		return 1
+	fi
+}
+
+debug_log
+debug_log "=================================================================="
+debug_log "<< busctl command: busctl $@"
+check_sanity $@
+wrapper $@

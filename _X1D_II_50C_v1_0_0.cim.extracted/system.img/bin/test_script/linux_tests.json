@@ -1,0 +1,14 @@
+{
+    "linux": {
+        "usb": [
+            {"name": "connstatus", "command": "linux_usb_connstatus.sh", "loop": 50}
+        ]
+    },
+
+    "media": {
+        "dsp": [
+            {"name": "dma", "command": "media_dsp_dma.sh", "loop": 100},
+            {"name": "icc", "command": "media_dsp_icc.sh", "loop": 50}
+        ]
+    }
+}

@@ -1,0 +1,58 @@
+Manifest-Version: 1.0
+Created-By: 1.0 (Android SignApk)
+
+Name: META-INF/com/google/android/updater-script
+SHA-256-Digest: bu1UzoPvauSgeV6Nk58igOqmoTF/6bFZrWL4lHvUuRo=
+SHA1-Digest: 69YE9aEcQIBFV9VyBaxjephFchA=
+
+Name: META-INF/com/android/otacert
+SHA1-Digest: 47Y5Ot6JmiBoZpuPiNii2VF0RME=
+
+Name: META-INF/com/google/android/update-binary
+SHA-256-Digest: jP0gcyVRqKFM/oDZh1zVKobsFyDAghGZ4HU19CiAMnY=
+SHA1-Digest: 4OA4zhFlwO+fjuLCzcZPNM6lzPI=
+
+Name: vendor.patch.dat
+SHA-256-Digest: 47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
+SHA1-Digest: 2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+
+Name: system.patch.dat
+SHA-256-Digest: 47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
+SHA1-Digest: 2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+
+Name: normal.img
+SHA-256-Digest: pQ1FgNq/U+avxazr8yufDsbMPjGZXy9jatg8b4llXnY=
+SHA1-Digest: YVogMR6H8vgKe/mhXfBR2pM/yeY=
+
+Name: vendor.new.dat
+SHA-256-Digest: n2Mh9AMzAq8jww/rRRTJtjG9Drkw6OQZOjjqGJFtCdc=
+SHA1-Digest: eoONm7QiVCuitdElAg67OOlxqKo=
+
+Name: system.transfer.list
+SHA-256-Digest: A8DBLddO9JPbyMIhgZYk7FyaLHUB1pnsrU9tXdMYoEg=
+SHA1-Digest: CBnTuLcVg27FPf5orucwcw6gIUE=
+
+Name: bootarea.img
+SHA-256-Digest: BfEq7TnRVHBGYxb40jALDMt1fZij0D4gHqu+cy7h0wM=
+SHA1-Digest: 8BlfmOD08NQPKNJgymBUngef5Hc=
+
+Name: system.new.dat
+SHA-256-Digest: Pw6f4fJaAlg8YhYy4ddS4wXMvs8fhTXNGJ0sMirGLjU=
+SHA1-Digest: ZO46Vis3OynU8h8kbKI3J+m1fiY=
+
+Name: vendor.transfer.list
+SHA-256-Digest: obVky/wRCOl9qtLtTpKF3iGPaUp9WDxxQTSHHXMd9uw=
+SHA1-Digest: Js6Y0F498vsRrV9upRuXVzbtHto=
+
+Name: META-INF/com/android/metadata
+SHA-256-Digest: Xn5SXEf/9VmBj0eYwu6BE5qs2qWEKTUgEp1HoKqm7jM=
+SHA1-Digest: MEC37fCUj3h888Je6TAiyi+NtRg=
+
+Name: recovery.img
+SHA-256-Digest: pq8cwnO1Pn1dqFD9fTuIKp7xngbLwgiRZsSY3R2Z5SQ=
+SHA1-Digest: 7Jj4IhLJY9pMpFXl14BrmbQZ25U=
+
+Name: file_contexts
+SHA-256-Digest: 4Bro40yIke5iVbTJq0OeMDscqKwe4Z6N/Z+peOwLC4o=
+SHA1-Digest: GKtM9PwvFpUYBnwwZfmvaNsL/TQ=
+

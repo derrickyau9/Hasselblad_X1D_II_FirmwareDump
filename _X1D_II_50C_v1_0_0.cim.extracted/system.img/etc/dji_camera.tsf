@@ -1,0 +1,15 @@
+#
+# camera setting file
+#
+
+[dcf:internal]
+    dir_no = 100
+    file_no = 0
+    dir_mode = DCF_ST_DMF_RESET
+    file_mode = DCF_ST_DMF_RESET
+
+[dcf:external]
+    dir_no = 100
+    file_no = 0
+    dir_mode = DCF_ST_DMF_RESET
+    file_mode = DCF_ST_DMF_RESET

@@ -1,0 +1,38 @@
+default  partial alphanumeric_keys modifier_keys
+xkb_symbols "pc105" {
+
+    key <ESC>  {	[ Escape		]	};
+
+    // The extra key on many European keyboards:
+    key <LSGT> {	[ less, greater, bar, brokenbar ] };
+
+    // The following keys are common to all layouts.
+    key <BKSL> {	[ backslash,	bar	]	};
+    key <SPCE> {	[ 	 space		]	};
+
+    include "srvr_ctrl(fkey2vt)"
+
+    key <BKSP> {	[ BackSpace, BackSpace	]	};
+
+    key  <TAB> {	[ Tab,	ISO_Left_Tab	]	};
+    key <RTRN> {	[ Return		]	};
+
+    key <CAPS> {	[ Caps_Lock		]	};
+    key <NMLK> {	[ Num_Lock 		]	};
+
+    key <LFSH> {	[ Shift_L		]	};
+    key <LCTL> {	[ Control_L		]	};
+    key <LWIN> {	[ Super_L		]	};
+
+    key <RTSH> {	[ Shift_R		]	};
+    key <RCTL> {	[ Control_R		]	};
+    key <RWIN> {	[ Super_R		]	};
+    key <MENU> {	[ Menu			]	};
+
+    key   <UP> {    [  Up           ]   };
+    key <LEFT> {    [  Left         ]   };
+    key <DOWN> {    [  Down         ]   };
+    key <RGHT> {    [  Right        ]   };
+};
+
+

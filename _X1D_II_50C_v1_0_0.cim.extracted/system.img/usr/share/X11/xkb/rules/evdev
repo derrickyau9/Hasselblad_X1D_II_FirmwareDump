@@ -1,0 +1,17 @@
+
+! model		=	keycodes
+  *		=	evdev
+
+! model		=	geometry
+  *		=       pc(pc105)
+
+! model		layout				=	symbols
+  *		*			=	pc+%l%(v)
+
+! model		layout		=	compat
+  *		*		=	basic
+
+! model		=	types
+  *		=	basic
+
+

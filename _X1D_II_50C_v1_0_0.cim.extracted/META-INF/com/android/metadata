@@ -1,0 +1,3 @@
+post-build=eagle/full_eagle_ec1704/eagle_ec1704:6.0/MDB08M/911:userdebug/test-keys
+post-timestamp=1565181513
+pre-device=eagle_ec1704
